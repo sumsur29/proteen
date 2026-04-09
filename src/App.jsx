@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 // ============ AURA TYPES ============
 const AURAS = {
@@ -87,6 +87,87 @@ const getQuestions = (diet) => {
       { text: "\"Apna Time Aayega\" — consistent grind", scores: { sattu_og: 2, soya_sigma: 2 } }, { text: "\"Jhoome Jo Pathaan\" — full energy 🔥", scores: { whey_bro: 2, egg_carton: 2 } }, { text: "\"Butter Paneer\" — wrong song right food 🧀", scores: { paneer_mafia: 3 } }, { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
   ];
+};
+
+// ============ HERO BANNER — stacking chain reaction ============
+const HERO_LINES = [
+  { text: "MORE PROTEIN → BETTER SKIN", color: "#FF5733" },
+  { text: "BETTER SKIN → BETTER BODY", color: "#FB923C" },
+  { text: "BETTER BODY → MORE RIZZ", color: "#A78BFA" },
+  { text: "MORE RIZZ → BETTER DMs 😏", color: "#F472B6" },
+  { text: "YOU'RE WELCOME.", color: "#34D399", big: true },
+  { text: "PROTEEEN TRACKS IT ALL.", color: "#FF5733", isCta: true },
+];
+
+const HeroBanner = ({ primary, gold, cream, ft }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count >= HERO_LINES.length) {
+      const reset = setTimeout(() => setCount(0), 2500);
+      return () => clearTimeout(reset);
+    }
+    const delay = count === HERO_LINES.length - 1 ? 1800 : count === HERO_LINES.length - 2 ? 1600 : 1200;
+    const timer = setTimeout(() => setCount(c => c + 1), delay);
+    return () => clearTimeout(timer);
+  }, [count]);
+
+  const visibleLines = HERO_LINES.slice(0, Math.min(count, HERO_LINES.length));
+
+  return (
+    <div style={{
+      background: `linear-gradient(135deg, ${primary}0C, ${gold}06)`,
+      border: `1px solid ${primary}18`, borderRadius: 22,
+      padding: "clamp(22px, 5vw, 36px) clamp(16px, 4vw, 28px)",
+      marginBottom: 24, textAlign: "center", position: "relative", overflow: "hidden",
+    }}>
+      {/* Stacking lines */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(4px, 1.2vw, 8px)", minHeight: "clamp(120px, 32vw, 180px)", justifyContent: "center" }}>
+        {visibleLines.map((line, i) => {
+          const isLatest = i === visibleLines.length - 1;
+          const isPast = !isLatest;
+          return (
+            <div key={i} style={{
+              fontSize: line.big
+                ? "clamp(1.6rem, 6.5vw, 2.4rem)"
+                : line.isCta
+                  ? "clamp(1rem, 3.5vw, 1.4rem)"
+                  : isPast
+                    ? "clamp(0.7rem, 2.5vw, 0.9rem)"
+                    : "clamp(1.1rem, 4.2vw, 1.6rem)",
+              fontWeight: 900, fontFamily: ft, textTransform: "uppercase",
+              color: isPast ? line.color + "40" : line.color,
+              letterSpacing: line.isCta ? 1 : "-0.02em", lineHeight: 1.2,
+              transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+              opacity: isLatest ? 1 : 0.5,
+              transform: isLatest ? "scale(1)" : "scale(0.95)",
+            }}>
+              {line.text}
+            </div>
+          );
+        })}
+        {visibleLines.length === 0 && (
+          <div style={{ fontSize: "clamp(1.1rem, 4.2vw, 1.6rem)", fontWeight: 900, fontFamily: ft, color: "rgba(255,255,255,0.08)", textTransform: "uppercase" }}>...</div>
+        )}
+      </div>
+
+      {/* Rizz meter */}
+      <div style={{ width: "80%", maxWidth: 300, margin: "clamp(12px, 2.5vw, 18px) auto 0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: "clamp(7px, 1.5vw, 9px)", color: "rgba(255,255,255,0.2)", fontFamily: "'JetBrains Mono', monospace", marginBottom: 4 }}>
+          <span>RIZZ LEVEL</span>
+          <span>{Math.min(Math.round((count / HERO_LINES.length) * 100), 100)}%</span>
+        </div>
+        <div style={{ width: "100%", height: 5, background: "rgba(255,255,255,0.06)", borderRadius: 3, overflow: "hidden" }}>
+          <div style={{
+            width: `${Math.min((count / HERO_LINES.length) * 100, 100)}%`, height: "100%",
+            background: `linear-gradient(90deg, ${primary}, ${visibleLines.length > 0 ? visibleLines[visibleLines.length - 1].color : primary})`,
+            borderRadius: 3, transition: "width 0.5s ease",
+            boxShadow: `0 0 10px ${primary}40`,
+          }} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 // ============ FEATURE BANNERS ============
@@ -253,30 +334,8 @@ export default function ProteeenQuiz() {
         <p style={{ fontSize: "clamp(.95rem,3vw,1.15rem)", color: P.cream + "70", marginBottom: 4, fontStyle: "italic" }}>india ka protein app. tu kaha pe hai?</p>
         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.12)", fontFamily: fm, marginBottom: 24 }}>not a health app. a status signal. 💅</p>
 
-        {/* Hero banner — the killer need */}
-        <div style={{
-          background: `linear-gradient(135deg, ${P.primary}12, ${P.gold}08)`,
-          border: `1px solid ${P.primary}20`, borderRadius: 22,
-          padding: "clamp(20px, 5vw, 32px)", marginBottom: 24, textAlign: "left",
-          position: "relative", overflow: "hidden",
-        }}>
-          <div style={{ position: "absolute", top: -20, right: -20, fontSize: 80, opacity: 0.06 }}>💪</div>
-          <div style={{ fontSize: "clamp(10px, 2.2vw, 12px)", color: P.primary, fontFamily: fm, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase", fontWeight: 700 }}>THE PROBLEM</div>
-          <div style={{ fontSize: "clamp(1.2rem, 4.5vw, 1.6rem)", fontWeight: 900, color: P.cream, fontFamily: ft, lineHeight: 1.2, marginBottom: 10, textTransform: "uppercase" }}>
-            93% of India is protein deficient.<br/>
-            <span style={{ color: P.primary }}>Nobody's tracking it.</span>
-          </div>
-          <div style={{ fontSize: "clamp(12px, 2.8vw, 14px)", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 14 }}>
-            You count calories. You count steps. You count macros maybe. But protein? You're guessing. And you're probably wrong. PROTEEEN makes protein your flex — track it, share it, compete with friends, get roasted when you slip.
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 11, color: P.primary, fontWeight: 700, background: P.primary + "12", padding: "4px 10px", borderRadius: 6 }}>🎯 track protein</span>
-            <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700, background: "#34D39912", padding: "4px 10px", borderRadius: 6 }}>⚔️ compete with friends</span>
-            <span style={{ fontSize: 11, color: "#A78BFA", fontWeight: 700, background: "#A78BFA12", padding: "4px 10px", borderRadius: 6 }}>📊 share your score</span>
-          </div>
-        </div>
-
-        <p style={{ fontSize: 13, color: P.primary + "90", marginBottom: 20, fontWeight: 600 }}>look better • flex harder • join the protein tribe</p>
+        {/* Hero banner — chain reaction cycling */}
+        <HeroBanner primary={P.primary} gold={P.gold} cream={P.cream} ft={ft} />
 
         {/* Primary CTA — above the fold */}
         <button onClick={() => setStep("diet")} style={{ background: `linear-gradient(135deg, ${P.primary}, #FF7B5C)`, color: "#fff", border: "none", borderRadius: 16, padding: "18px 48px", fontSize: "clamp(1rem,4vw,1.15rem)", fontWeight: 900, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, boxShadow: `0 8px 40px ${P.primary}30`, animation: "pulse 2.5s infinite", marginBottom: 8 }}>FIND MY PROTEIN AURA →</button>
