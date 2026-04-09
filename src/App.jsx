@@ -550,7 +550,7 @@ export default function ProteeenQuiz() {
       {/* Marquee — lime on dark */}
       <div style={{ position:"fixed",top:0,left:0,right:0,background:P.lime,padding:"7px 0",overflow:"hidden",zIndex:10 }}>
         <div style={{ display:"flex",animation:"marquee 25s linear infinite",whiteSpace:"nowrap" }}>
-          {Array(10).fill("PROTEEEN • APP COMING SOON • INDIA KA PROTEIN SCORE • ").map((t,i)=>(
+          {Array(10).fill("PROTEEEN • APP COMING SOON • INDIA KA PROTEIN APP • ").map((t,i)=>(
             <span key={i} style={{ fontSize:11,fontWeight:900,color:"#000",fontFamily:font_,letterSpacing:2 }}>{t}</span>
           ))}
         </div>
