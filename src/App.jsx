@@ -565,7 +565,7 @@ export default function ProteeenQuiz() {
           <div style={{ position:"absolute",top:-6,right:-14,background:P.coral,color:"#fff",fontSize:9,fontWeight:800,padding:"3px 8px",borderRadius:4,transform:"rotate(12deg)",fontFamily:fm,letterSpacing:1 }}>BETA</div>
         </div>
 
-        <p style={{ fontSize:"clamp(.95rem,3vw,1.15rem)",color:P.cream+"70",marginBottom:4,fontStyle:"italic" }}>india ka protein score. tu kitne pe hai?</p>
+        <p style={{ fontSize:"clamp(.95rem,3vw,1.15rem)",color:P.cream+"70",marginBottom:4,fontStyle:"italic" }}>india ka protein app. tu kaha pe hai?</p>
         <p style={{ fontSize:12,color:"rgba(255,255,255,0.12)",fontFamily:fm,marginBottom:8 }}>not a health app. a status signal. 💅</p>
         
         {/* Subtext — look good energy */}
