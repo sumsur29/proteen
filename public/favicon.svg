@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#08080C"/>
+  <text x="256" y="340" text-anchor="middle" font-family="Impact, 'Arial Black', sans-serif" font-weight="900" font-size="360" fill="#FF5733">P</text>
+  <rect x="300" y="120" width="8" height="280" rx="4" fill="#D4A853" opacity="0.6"/>
+  <rect x="330" y="120" width="8" height="280" rx="4" fill="#D4A853" opacity="0.4"/>
+  <rect x="360" y="120" width="8" height="280" rx="4" fill="#D4A853" opacity="0.2"/>
+</svg>
