@@ -130,14 +130,16 @@ const HeroBanner = ({ primary, gold, cream, ft }) => {
             <div key={i} style={{
               fontSize: line.big
                 ? "clamp(1.6rem, 6.5vw, 2.4rem)"
-                : line.isCta
-                  ? "clamp(1rem, 3.5vw, 1.4rem)"
-                  : isPast
-                    ? "clamp(0.7rem, 2.5vw, 0.9rem)"
-                    : "clamp(1.1rem, 4.2vw, 1.6rem)",
-              fontWeight: 900, fontFamily: ft, textTransform: "uppercase",
+                : line.small
+                  ? "clamp(0.65rem, 2.2vw, 0.85rem)"
+                  : line.isCta
+                    ? "clamp(1rem, 3.5vw, 1.4rem)"
+                    : isPast
+                      ? "clamp(0.7rem, 2.5vw, 0.9rem)"
+                      : "clamp(1.1rem, 4.2vw, 1.6rem)",
+              fontWeight: line.small ? 600 : 900, fontFamily: line.small ? "'JetBrains Mono', monospace" : ft, textTransform: "uppercase",
               color: isPast ? line.color + "40" : line.color,
-              letterSpacing: line.isCta ? 1 : "-0.02em", lineHeight: 1.2,
+              letterSpacing: line.small ? 2 : line.isCta ? 1 : "-0.02em", lineHeight: 1.2,
               transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
               opacity: isLatest ? 1 : 0.5,
               transform: isLatest ? "scale(1)" : "scale(0.95)",
@@ -300,7 +302,7 @@ export default function ProteeenQuiz() {
     ctx.font = "20px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.25)"; ctx.fillText("protein check ✓  rizz check ✓  aura check ✓", w/2, 970);
     ctx.fillStyle = result.color; ctx.beginPath(); ctx.roundRect(w/2-200, 1060, 400, 68, 18); ctx.fill();
     ctx.font = "bold 24px sans-serif"; ctx.fillStyle = "#fff"; ctx.fillText("FIND YOUR AURA →", w/2, 1102);
-    ctx.font = "15px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.1)"; ctx.fillText("proteeen.app • app coming soon", w/2, 1230);
+    ctx.font = "15px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.1)"; ctx.fillText("proteeen.app • coming soon", w/2, 1230);
     ctx.fillStyle = result.color; ctx.fillRect(0, h-5, w, 5);
     if (action === "copy") {
       try { const blob = await new Promise(r => c.toBlob(r, "image/png")); await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]); setCopyMsg("Copied! Paste anywhere 📋"); }
@@ -321,7 +323,7 @@ export default function ProteeenQuiz() {
     <div style={{ ...pg, justifyContent: "flex-start", paddingTop: 50 }}><style>{css}</style>
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, background: P.primary, padding: "7px 0", overflow: "hidden", zIndex: 10 }}>
         <div style={{ display: "flex", animation: "marquee 25s linear infinite", whiteSpace: "nowrap" }}>
-          {Array(10).fill("PROTEEEN • APP COMING SOON • INDIA KA PROTEIN APP • ").map((t, i) => <span key={i} style={{ fontSize: 11, fontWeight: 900, color: "#fff", fontFamily: ft, letterSpacing: 2 }}>{t}</span>)}
+          {Array(10).fill("PROTEEEN • COMING SOON • INDIA KA PROTEIN SCORE • ").map((t, i) => <span key={i} style={{ fontSize: 11, fontWeight: 900, color: "#fff", fontFamily: ft, letterSpacing: 2 }}>{t}</span>)}
         </div>
       </div>
       <div style={{ textAlign: "center", maxWidth: 560, zIndex: 2, animation: "fadeUp 0.8s ease", padding: "0 4px", width: "100%" }}>
@@ -337,6 +339,8 @@ export default function ProteeenQuiz() {
         {/* Hero banner — chain reaction cycling */}
         <HeroBanner primary={P.primary} gold={P.gold} cream={P.cream} ft={ft} />
 
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 14 }}>coming soon • take the quiz • share your score • join the waitlist</p>
+
         {/* Primary CTA — above the fold */}
         <button onClick={() => setStep("diet")} style={{ background: `linear-gradient(135deg, ${P.primary}, #FF7B5C)`, color: "#fff", border: "none", borderRadius: 16, padding: "18px 48px", fontSize: "clamp(1rem,4vw,1.15rem)", fontWeight: 900, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, boxShadow: `0 8px 40px ${P.primary}30`, animation: "pulse 2.5s infinite", marginBottom: 8 }}>FIND MY PROTEIN AURA →</button>
         <p style={{ fontSize: 11, color: "rgba(255,255,255,0.1)", fontFamily: fm, marginBottom: 32 }}>30 sec • 10 questions • 1 truth bomb 💣</p>
@@ -349,7 +353,7 @@ export default function ProteeenQuiz() {
 
         <div style={{ background: P.primary + "0A", border: `1px solid ${P.primary}18`, borderRadius: 14, padding: "12px 20px", marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 16 }}>🚀</span>
-          <span style={{ fontSize: 13, color: P.cream + "90" }}><strong style={{ color: P.primary }}>App dropping soon</strong> — quiz le, waitlist join kar</span>
+          <span style={{ fontSize: 13, color: P.cream + "90" }}><strong style={{ color: P.primary }}>Coming soon</strong> — quiz le, waitlist join kar</span>
         </div>
         <br />
         {/* Bottom CTA — smaller, outline style */}
