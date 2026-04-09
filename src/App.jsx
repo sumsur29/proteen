@@ -297,7 +297,7 @@ export default function ProteeenQuiz() {
     ctx.fillStyle = result.color + "0A"; ctx.beginPath(); ctx.roundRect(120, 790, w-240, 80, 14); ctx.fill();
     ctx.font = "24px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.5)"; ctx.fillText("🔥 " + result.roast.substring(0, 50), w/2, 840);
     ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(200, 920); ctx.lineTo(w-200, 920); ctx.stroke();
-    ctx.font = "20px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.25)"; ctx.fillText("india ka protein app. tu kaha pe hai?", w/2, 970);
+    ctx.font = "20px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.25)"; ctx.fillText("protein check ✓  rizz check ✓  aura check ✓", w/2, 970);
     ctx.fillStyle = result.color; ctx.beginPath(); ctx.roundRect(w/2-200, 1060, 400, 68, 18); ctx.fill();
     ctx.font = "bold 24px sans-serif"; ctx.fillStyle = "#fff"; ctx.fillText("FIND YOUR AURA →", w/2, 1102);
     ctx.font = "15px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.1)"; ctx.fillText("proteeen.app • app coming soon", w/2, 1230);
@@ -331,7 +331,7 @@ export default function ProteeenQuiz() {
           </h1>
           <div style={{ position: "absolute", top: -6, right: -14, background: P.gold, color: "#000", fontSize: 9, fontWeight: 800, padding: "3px 8px", borderRadius: 4, transform: "rotate(12deg)", fontFamily: fm, letterSpacing: 1 }}>BETA</div>
         </div>
-        <p style={{ fontSize: "clamp(.95rem,3vw,1.15rem)", color: P.cream + "70", marginBottom: 4, fontStyle: "italic" }}>india ka protein app. tu kaha pe hai?</p>
+        <p style={{ fontSize: "clamp(.95rem,3vw,1.15rem)", color: P.cream + "70", marginBottom: 4 }}>protein check ✓ rizz check ✓ aura check ✓</p>
         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.12)", fontFamily: fm, marginBottom: 24 }}>not a health app. a status signal. 💅</p>
 
         {/* Hero banner — chain reaction cycling */}
