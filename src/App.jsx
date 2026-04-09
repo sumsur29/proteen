@@ -493,7 +493,7 @@ export default function ProteeenQuiz() {
 
     // Tagline
     ctx.font = "20px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.25)";
-    ctx.fillText("india ka protein score. tu kitne pe hai?", w/2, 970);
+    ctx.fillText("india ka protein app. tu kaha pe hai?", w/2, 970);
 
     // CTA
     ctx.fillStyle = result.color;
