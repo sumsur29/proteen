@@ -12,321 +12,138 @@ const AURAS = {
   clean_label_queen: { name: "CLEAN LABEL QUEEN", emoji: "✨", color: "#2DD4BF", accent: "#5EEAD4", bg: "linear-gradient(160deg, #000A08 0%, #001A15 40%, #002520 100%)", tagline: "\"Ingredients padhte ho? I only eat clean.\"", desc: "Whole Truth bars, Epigamia, organic PB — premium game. No added sugar, no palm oil. \"Health is an investment, bro.\"", proteinLevel: "HIGH", rizzScore: 85, percentile: 79, bollywood: "\"The Whole Truth and nothing but the truth\"", roast: "Tu grocery mein label padh ke 45 min lagata hai 🔍", flexLine: "If I can't read the label, I don't eat it" },
 };
 
-// ============ DIET-AWARE QUESTIONS ============
+// ============ DIET-AWARE QUESTIONS (same as before) ============
 const getQuestions = (diet) => {
   const isVeg = diet === "veg", isNonveg = diet === "nonveg";
   return [
     { q: "subah uthke sabse pehle kya karta/karti hai?", emoji: "🌅", options: isVeg ? [
-      { text: "phone check — fitness stories dekhunga", scores: { protein_poser: 3, clean_label_queen: 1 } },
-      { text: "kitchen mein paneer/tofu banana shuru", scores: { paneer_mafia: 2, sattu_og: 2 } },
-      { text: "sattu ghol ke pee leta hoon — OG drink", scores: { sattu_og: 3, soya_sigma: 1 } },
-      { text: "chai + biscuit — protein baad mein dekhenge", scores: { dal_delusional: 3, protein_poser: 1 } },
+      { text: "phone check — fitness stories dekhunga", scores: { protein_poser: 3, clean_label_queen: 1 } }, { text: "kitchen mein paneer/tofu banana shuru", scores: { paneer_mafia: 2, sattu_og: 2 } }, { text: "sattu ghol ke pee leta hoon — OG drink", scores: { sattu_og: 3, soya_sigma: 1 } }, { text: "chai + biscuit — protein baad mein dekhenge", scores: { dal_delusional: 3, protein_poser: 1 } },
     ] : isNonveg ? [
-      { text: "phone check — gym stories dekhna zaroori", scores: { protein_poser: 3, whey_bro: 1 } },
-      { text: "eggs crack karna — daily ritual hai", scores: { egg_carton: 3, whey_bro: 1 } },
-      { text: "shaker bottle dhundta hoon — pre-workout", scores: { whey_bro: 3, egg_carton: 1 } },
-      { text: "chai + paratha — protein? wo kya hota hai?", scores: { dal_delusional: 3, protein_poser: 1 } },
+      { text: "phone check — gym stories dekhna zaroori", scores: { protein_poser: 3, whey_bro: 1 } }, { text: "eggs crack karna — daily ritual hai", scores: { egg_carton: 3, whey_bro: 1 } }, { text: "shaker bottle dhundta hoon — pre-workout", scores: { whey_bro: 3, egg_carton: 1 } }, { text: "chai + paratha — protein? wo kya hota hai?", scores: { dal_delusional: 3, protein_poser: 1 } },
     ] : [
-      { text: "phone check — gym stories dekhunga", scores: { protein_poser: 3, whey_bro: 1 } },
-      { text: "kitchen mein eggs ya paneer banana", scores: { paneer_mafia: 2, egg_carton: 2 } },
-      { text: "shaker bottle ya sattu — mood pe depend", scores: { whey_bro: 2, sattu_og: 2 } },
-      { text: "chai + biscuit — classic combo", scores: { dal_delusional: 3, protein_poser: 1 } },
+      { text: "phone check — gym stories dekhunga", scores: { protein_poser: 3, whey_bro: 1 } }, { text: "kitchen mein eggs ya paneer banana", scores: { paneer_mafia: 2, egg_carton: 2 } }, { text: "shaker bottle ya sattu — mood pe depend", scores: { whey_bro: 2, sattu_og: 2 } }, { text: "chai + biscuit — classic combo", scores: { dal_delusional: 3, protein_poser: 1 } },
     ]},
     { q: "restaurant mein waiter bola \"sir kya laayein?\"", emoji: "🍽️", options: isVeg ? [
-      { text: "\"paneer tikka, paneer masala, EXTRA paneer\"", scores: { paneer_mafia: 3 } },
-      { text: "\"sabse zyada protein kismein hai bhaiya?\"", scores: { clean_label_queen: 2, soya_sigma: 2 } },
-      { text: "\"dal makhani + raita + paneer side\"", scores: { sattu_og: 2, paneer_mafia: 1 } },
-      { text: "\"jo bestseller hai wahi le aao\" — YOLO", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"paneer tikka, paneer masala, EXTRA paneer\"", scores: { paneer_mafia: 3 } }, { text: "\"sabse zyada protein kismein hai bhaiya?\"", scores: { clean_label_queen: 2, soya_sigma: 2 } }, { text: "\"dal makhani + raita + paneer side\"", scores: { sattu_og: 2, paneer_mafia: 1 } }, { text: "\"jo bestseller hai wahi le aao\" — YOLO", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : isNonveg ? [
-      { text: "\"chicken breast grilled, no oil, steamed\"", scores: { whey_bro: 3, clean_label_queen: 1 } },
-      { text: "\"butter chicken + naan\" — protein toh hai right?", scores: { dal_delusional: 2, protein_poser: 1 } },
-      { text: "\"egg curry + chicken tikka — double protein\"", scores: { egg_carton: 2, whey_bro: 2 } },
-      { text: "\"protein per dish kitna hai?\" *waiter confused*", scores: { clean_label_queen: 3 } },
+      { text: "\"chicken breast grilled, no oil, steamed\"", scores: { whey_bro: 3, clean_label_queen: 1 } }, { text: "\"butter chicken + naan\" — protein toh hai right?", scores: { dal_delusional: 2, protein_poser: 1 } }, { text: "\"egg curry + chicken tikka — double protein\"", scores: { egg_carton: 2, whey_bro: 2 } }, { text: "\"protein per dish kitna hai?\" *waiter confused*", scores: { clean_label_queen: 3 } },
     ] : [
-      { text: "\"paneer tikka + egg curry bhi maybe\"", scores: { paneer_mafia: 2, egg_carton: 2 } },
-      { text: "\"protein per dish kitna hai?\"", scores: { clean_label_queen: 2, soya_sigma: 2 } },
-      { text: "\"chicken ya paneer — jo zyada protein de\"", scores: { whey_bro: 2, paneer_mafia: 2 } },
-      { text: "\"jo bestseller hai wahi le aao\"", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"paneer tikka + egg curry bhi maybe\"", scores: { paneer_mafia: 2, egg_carton: 2 } }, { text: "\"protein per dish kitna hai?\"", scores: { clean_label_queen: 2, soya_sigma: 2 } }, { text: "\"chicken ya paneer — jo zyada protein de\"", scores: { whey_bro: 2, paneer_mafia: 2 } }, { text: "\"jo bestseller hai wahi le aao\"", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
     { q: "bestie bola \"protein bar de na\" — tu:", emoji: "🍫", options: isVeg ? [
-      { text: "\"le Whole Truth bar — clean label 🌿\"", scores: { clean_label_queen: 3 } },
-      { text: "\"bar? ₹150 ka 10g? soya kha ₹8 mein 26g\"", scores: { soya_sigma: 3 } },
-      { text: "\"ruk homemade sattu ladoo deta hoon\"", scores: { sattu_og: 3 } },
-      { text: "\"mere paas nahi, Swiggy pe order kar\"", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "\"le Whole Truth bar — clean label 🌿\"", scores: { clean_label_queen: 3 } }, { text: "\"bar? ₹150 ka 10g? soya kha ₹8 mein 26g\"", scores: { soya_sigma: 3 } }, { text: "\"ruk homemade sattu ladoo deta hoon\"", scores: { sattu_og: 3 } }, { text: "\"mere paas nahi, Swiggy pe order kar\"", scores: { protein_poser: 2, dal_delusional: 2 } },
     ] : isNonveg ? [
-      { text: "\"le Whole Truth bar — clean, no junk\"", scores: { clean_label_queen: 3 } },
-      { text: "\"ruk mera shaker half de deta hoon\"", scores: { whey_bro: 3 } },
-      { text: "\"bar chod, 3 boiled eggs kha\"", scores: { egg_carton: 3 } },
-      { text: "\"mere paas nahi, Swiggy pe order kar\"", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "\"le Whole Truth bar — clean, no junk\"", scores: { clean_label_queen: 3 } }, { text: "\"ruk mera shaker half de deta hoon\"", scores: { whey_bro: 3 } }, { text: "\"bar chod, 3 boiled eggs kha\"", scores: { egg_carton: 3 } }, { text: "\"mere paas nahi, Swiggy pe order kar\"", scores: { protein_poser: 2, dal_delusional: 2 } },
     ] : [
-      { text: "\"le Whole Truth bar — clean label\"", scores: { clean_label_queen: 3 } },
-      { text: "\"₹150 ka 10g? soya chunks kha\"", scores: { soya_sigma: 3 } },
-      { text: "\"ruk mera shaker se half de deta hoon\"", scores: { whey_bro: 3 } },
-      { text: "\"mere paas nahi bro\"", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "\"le Whole Truth bar — clean label\"", scores: { clean_label_queen: 3 } }, { text: "\"₹150 ka 10g? soya chunks kha\"", scores: { soya_sigma: 3 } }, { text: "\"ruk mera shaker se half de deta hoon\"", scores: { whey_bro: 3 } }, { text: "\"mere paas nahi bro\"", scores: { protein_poser: 2, dal_delusional: 2 } },
     ]},
     { q: "mummy ne pucha \"dinner mein kya banana hai?\"", emoji: "👩‍🍳", options: isVeg ? [
-      { text: "\"paneer. BAS. kuch bhi bana do paneer daal do\"", scores: { paneer_mafia: 3 } },
-      { text: "\"soya curry + chana dal extra daal do 🥺\"", scores: { soya_sigma: 2, sattu_og: 2 } },
-      { text: "\"main khud Greek yogurt smoothie bana lunga\"", scores: { clean_label_queen: 3 } },
-      { text: "\"jo bhi ban raha hai\" *cries later about protein*", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"paneer. BAS. kuch bhi bana do paneer daal do\"", scores: { paneer_mafia: 3 } }, { text: "\"soya curry + chana dal extra daal do 🥺\"", scores: { soya_sigma: 2, sattu_og: 2 } }, { text: "\"main khud Greek yogurt smoothie bana lunga\"", scores: { clean_label_queen: 3 } }, { text: "\"jo bhi ban raha hai\" *cries later about protein*", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : isNonveg ? [
-      { text: "\"chicken breast grilled — no oil please\"", scores: { whey_bro: 3 } },
-      { text: "\"egg bhurji + chicken curry — double up\"", scores: { egg_carton: 2, whey_bro: 2 } },
-      { text: "\"main khud bana lunga\" *makes egg bhurji*", scores: { egg_carton: 3 } },
-      { text: "\"jo bhi ban raha hai\" *orders biryani*", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"chicken breast grilled — no oil please\"", scores: { whey_bro: 3 } }, { text: "\"egg bhurji + chicken curry — double up\"", scores: { egg_carton: 2, whey_bro: 2 } }, { text: "\"main khud bana lunga\" *makes egg bhurji*", scores: { egg_carton: 3 } }, { text: "\"jo bhi ban raha hai\" *orders biryani*", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : [
-      { text: "\"paneer ya egg curry — mood pe depend\"", scores: { paneer_mafia: 2, egg_carton: 2 } },
-      { text: "\"dal mein chana extra daal do 🥺\"", scores: { sattu_og: 2, soya_sigma: 2 } },
-      { text: "\"main khud bana lunga\" *omelette time*", scores: { egg_carton: 3 } },
-      { text: "\"jo bhi ban raha hai\" 😔", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"paneer ya egg curry — mood pe depend\"", scores: { paneer_mafia: 2, egg_carton: 2 } }, { text: "\"dal mein chana extra daal do 🥺\"", scores: { sattu_og: 2, soya_sigma: 2 } }, { text: "\"main khud bana lunga\" *omelette time*", scores: { egg_carton: 3 } }, { text: "\"jo bhi ban raha hai\" 😔", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
     { q: "dating profile mein kya hoga? honest bol 😏", emoji: "💘", options: isVeg ? [
-      { text: "\"will cook paneer for you on first date 🧀\"", scores: { paneer_mafia: 3 } },
-      { text: "\"clean eating, ingredient reader 🌿\"", scores: { clean_label_queen: 3 } },
-      { text: "\"sattu + soya believer. low maintenance.\"", scores: { soya_sigma: 2, sattu_og: 2 } },
-      { text: "\"i eat healthy\" *maggi + extra cheese*", scores: { protein_poser: 3 } },
+      { text: "\"will cook paneer for you on first date 🧀\"", scores: { paneer_mafia: 3 } }, { text: "\"clean eating, ingredient reader 🌿\"", scores: { clean_label_queen: 3 } }, { text: "\"sattu + soya believer. low maintenance.\"", scores: { soya_sigma: 2, sattu_og: 2 } }, { text: "\"i eat healthy\" *maggi + extra cheese*", scores: { protein_poser: 3 } },
     ] : isNonveg ? [
-      { text: "\"gym 5x/week, macro tracking 💪\"", scores: { whey_bro: 3 } },
-      { text: "\"will make egg bhurji at 2 AM 🥚\"", scores: { egg_carton: 3 } },
-      { text: "\"clean eating, mindful living 🌿\"", scores: { clean_label_queen: 3 } },
-      { text: "\"i eat healthy\" *butter chicken x naan x3*", scores: { protein_poser: 3 } },
+      { text: "\"gym 5x/week, macro tracking 💪\"", scores: { whey_bro: 3 } }, { text: "\"will make egg bhurji at 2 AM 🥚\"", scores: { egg_carton: 3 } }, { text: "\"clean eating, mindful living 🌿\"", scores: { clean_label_queen: 3 } }, { text: "\"i eat healthy\" *butter chicken x naan x3*", scores: { protein_poser: 3 } },
     ] : [
-      { text: "\"will cook paneer for you 🧀\"", scores: { paneer_mafia: 3 } },
-      { text: "\"gym 5x/week, don't waste my time\"", scores: { whey_bro: 3 } },
-      { text: "\"clean eating, mindful living 🌿\"", scores: { clean_label_queen: 3 } },
-      { text: "\"i eat healthy\" *orders maggi*", scores: { protein_poser: 3 } },
+      { text: "\"will cook paneer for you 🧀\"", scores: { paneer_mafia: 3 } }, { text: "\"gym 5x/week, don't waste my time\"", scores: { whey_bro: 3 } }, { text: "\"clean eating, mindful living 🌿\"", scores: { clean_label_queen: 3 } }, { text: "\"i eat healthy\" *orders maggi*", scores: { protein_poser: 3 } },
     ]},
     { q: "budget tight hai. protein kahan se?", emoji: "💸", options: isVeg ? [
-      { text: "soya + sattu + sprouts — ₹500/month 🫡", scores: { soya_sigma: 3, sattu_og: 2 } },
-      { text: "paneer khareedna padega — no compromise", scores: { paneer_mafia: 3 } },
-      { text: "Whole Truth subscription — investment hai", scores: { clean_label_queen: 2, protein_poser: 1 } },
-      { text: "\"mehenga hai\" *₹200 daily Zomato*", scores: { dal_delusional: 3 } },
+      { text: "soya + sattu + sprouts — ₹500/month 🫡", scores: { soya_sigma: 3, sattu_og: 2 } }, { text: "paneer khareedna padega — no compromise", scores: { paneer_mafia: 3 } }, { text: "Whole Truth subscription — investment hai", scores: { clean_label_queen: 2, protein_poser: 1 } }, { text: "\"mehenga hai\" *₹200 daily Zomato*", scores: { dal_delusional: 3 } },
     ] : isNonveg ? [
-      { text: "6 eggs = ₹42. daily. simple math.", scores: { egg_carton: 3 } },
-      { text: "chicken breast wholesale — meal prep", scores: { whey_bro: 3 } },
-      { text: "soya + eggs — budget king combo", scores: { soya_sigma: 2, egg_carton: 2 } },
-      { text: "\"mehenga hai\" *Swiggy biryani daily*", scores: { dal_delusional: 3 } },
+      { text: "6 eggs = ₹42. daily. simple math.", scores: { egg_carton: 3 } }, { text: "chicken breast wholesale — meal prep", scores: { whey_bro: 3 } }, { text: "soya + eggs — budget king combo", scores: { soya_sigma: 2, egg_carton: 2 } }, { text: "\"mehenga hai\" *Swiggy biryani daily*", scores: { dal_delusional: 3 } },
     ] : [
-      { text: "soya + sattu + eggs — ₹600/month", scores: { soya_sigma: 3, egg_carton: 1 } },
-      { text: "eggs + paneer rotation", scores: { egg_carton: 2, paneer_mafia: 2 } },
-      { text: "supplements se solve karunga", scores: { whey_bro: 2, clean_label_queen: 2 } },
-      { text: "\"mehenga hai\" *₹200 on Zomato*", scores: { dal_delusional: 3 } },
+      { text: "soya + sattu + eggs — ₹600/month", scores: { soya_sigma: 3, egg_carton: 1 } }, { text: "eggs + paneer rotation", scores: { egg_carton: 2, paneer_mafia: 2 } }, { text: "supplements se solve karunga", scores: { whey_bro: 2, clean_label_queen: 2 } }, { text: "\"mehenga hai\" *₹200 on Zomato*", scores: { dal_delusional: 3 } },
     ]},
     { q: "Pushpa style — \"main jhukunga nahi\" — kya nahi chhodega?", emoji: "🔥", options: isVeg ? [
-      { text: "\"mera paneer koi nahi chheen sakta\" 🧀", scores: { paneer_mafia: 3 } },
-      { text: "\"mera sattu — generations se hai\"", scores: { sattu_og: 3 } },
-      { text: "\"mera soya — ₹8 = 26g, fight me\"", scores: { soya_sigma: 3 } },
-      { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"mera paneer koi nahi chheen sakta\" 🧀", scores: { paneer_mafia: 3 } }, { text: "\"mera sattu — generations se hai\"", scores: { sattu_og: 3 } }, { text: "\"mera soya — ₹8 = 26g, fight me\"", scores: { soya_sigma: 3 } }, { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : isNonveg ? [
-      { text: "\"mera whey — fire me, still buying\"", scores: { whey_bro: 3 } },
-      { text: "\"mere eggs — 6/day, non-negotiable\"", scores: { egg_carton: 3 } },
-      { text: "\"mera chicken — meal prep is religion\"", scores: { whey_bro: 2, clean_label_queen: 2 } },
-      { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"mera whey — fire me, still buying\"", scores: { whey_bro: 3 } }, { text: "\"mere eggs — 6/day, non-negotiable\"", scores: { egg_carton: 3 } }, { text: "\"mera chicken — meal prep is religion\"", scores: { whey_bro: 2, clean_label_queen: 2 } }, { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : [
-      { text: "\"mera paneer — koi nahi chheen sakta\" 🧀", scores: { paneer_mafia: 3 } },
-      { text: "\"mere eggs — 6/day, non-negotiable\"", scores: { egg_carton: 3 } },
-      { text: "\"mera sattu — family mein generations se\"", scores: { sattu_og: 3 } },
-      { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"mera paneer — koi nahi chheen sakta\" 🧀", scores: { paneer_mafia: 3 } }, { text: "\"mere eggs — 6/day, non-negotiable\"", scores: { egg_carton: 3 } }, { text: "\"mera sattu — family mein generations se\"", scores: { sattu_og: 3 } }, { text: "\"mera... actually flexible hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
     { q: "grocery store mein pehle kahan jaata hai?", emoji: "🛒", options: isVeg ? [
-      { text: "dairy — paneer, dahi, Greek yogurt 🧀", scores: { paneer_mafia: 2, clean_label_queen: 2 } },
-      { text: "pulses — chana, rajma, soya, sattu", scores: { soya_sigma: 2, sattu_og: 2 } },
-      { text: "supplement aisle — plant protein, bars", scores: { clean_label_queen: 3 } },
-      { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "dairy — paneer, dahi, Greek yogurt 🧀", scores: { paneer_mafia: 2, clean_label_queen: 2 } }, { text: "pulses — chana, rajma, soya, sattu", scores: { soya_sigma: 2, sattu_og: 2 } }, { text: "supplement aisle — plant protein, bars", scores: { clean_label_queen: 3 } }, { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
     ] : isNonveg ? [
-      { text: "meat — chicken breast, fish, keema", scores: { whey_bro: 2, egg_carton: 1 } },
-      { text: "egg tray — 30 ka crate leke nikalta hoon 🥚", scores: { egg_carton: 3 } },
-      { text: "supplement aisle — whey, bars", scores: { whey_bro: 2, clean_label_queen: 2 } },
-      { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "meat — chicken breast, fish, keema", scores: { whey_bro: 2, egg_carton: 1 } }, { text: "egg tray — 30 ka crate leke nikalta hoon 🥚", scores: { egg_carton: 3 } }, { text: "supplement aisle — whey, bars", scores: { whey_bro: 2, clean_label_queen: 2 } }, { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
     ] : [
-      { text: "dairy — paneer, dahi, yogurt", scores: { paneer_mafia: 2, clean_label_queen: 2 } },
-      { text: "eggs + pulses — soya, 30-egg tray", scores: { soya_sigma: 2, egg_carton: 2 } },
-      { text: "supplement aisle — whey, bars", scores: { whey_bro: 2, clean_label_queen: 2 } },
-      { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
+      { text: "dairy — paneer, dahi, yogurt", scores: { paneer_mafia: 2, clean_label_queen: 2 } }, { text: "eggs + pulses — soya, 30-egg tray", scores: { soya_sigma: 2, egg_carton: 2 } }, { text: "supplement aisle — whey, bars", scores: { whey_bro: 2, clean_label_queen: 2 } }, { text: "snacks — \"kal se healthy\" 🤡", scores: { protein_poser: 2, dal_delusional: 2 } },
     ]},
     { q: "Stree 2 — \"wo kuch bhi kar sakti hai\" — teri protein superpower?", emoji: "⚡", options: isVeg ? [
-      { text: "\"1 meal mein paneer se 40g nikaal sakta\" 🧀", scores: { paneer_mafia: 3 } },
-      { text: "\"₹500/month mein 60g daily\" 🟤", scores: { soya_sigma: 3 } },
-      { text: "\"har label 2 sec mein scan\" ✨", scores: { clean_label_queen: 3 } },
-      { text: "\"main toh bas survive kar raha\" 💀", scores: { dal_delusional: 3 } },
+      { text: "\"1 meal mein paneer se 40g nikaal sakta\" 🧀", scores: { paneer_mafia: 3 } }, { text: "\"₹500/month mein 60g daily\" 🟤", scores: { soya_sigma: 3 } }, { text: "\"har label 2 sec mein scan\" ✨", scores: { clean_label_queen: 3 } }, { text: "\"main toh bas survive kar raha\" 💀", scores: { dal_delusional: 3 } },
     ] : isNonveg ? [
-      { text: "\"6 eggs 5 min mein done\" 🥚", scores: { egg_carton: 3 } },
-      { text: "\"meal prep Sunday se Friday chalta\" 💪", scores: { whey_bro: 3 } },
-      { text: "\"har label 2 sec mein read\" ✨", scores: { clean_label_queen: 3 } },
-      { text: "\"bas gym selfie le sakta hoon\" 📸", scores: { protein_poser: 3 } },
+      { text: "\"6 eggs 5 min mein done\" 🥚", scores: { egg_carton: 3 } }, { text: "\"meal prep Sunday se Friday chalta\" 💪", scores: { whey_bro: 3 } }, { text: "\"har label 2 sec mein read\" ✨", scores: { clean_label_queen: 3 } }, { text: "\"bas gym selfie le sakta hoon\" 📸", scores: { protein_poser: 3 } },
     ] : [
-      { text: "\"kisi bhi food se protein nikaalunga\" 🔥", scores: { sattu_og: 2, soya_sigma: 2 } },
-      { text: "\"meal prep game unmatched\" 💪", scores: { whey_bro: 2, egg_carton: 2 } },
-      { text: "\"har label 2 sec mein scan\" ✨", scores: { clean_label_queen: 3 } },
-      { text: "\"bas survive kar raha hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"kisi bhi food se protein nikaalunga\" 🔥", scores: { sattu_og: 2, soya_sigma: 2 } }, { text: "\"meal prep game unmatched\" 💪", scores: { whey_bro: 2, egg_carton: 2 } }, { text: "\"har label 2 sec mein scan\" ✨", scores: { clean_label_queen: 3 } }, { text: "\"bas survive kar raha hoon\" 💀", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
     { q: "last — protein journey ka Bollywood anthem? 🎬", emoji: "🎵", options: isVeg ? [
-      { text: "\"Apna Time Aayega\" — soya+sattu grind", scores: { sattu_og: 2, soya_sigma: 2 } },
-      { text: "\"Butter Paneer\" — wrong song right food 🧀", scores: { paneer_mafia: 3 } },
-      { text: "\"Zinda\" Bhaag Milkha — clean fuel 🌿", scores: { clean_label_queen: 3 } },
-      { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"Apna Time Aayega\" — soya+sattu grind", scores: { sattu_og: 2, soya_sigma: 2 } }, { text: "\"Butter Paneer\" — wrong song right food 🧀", scores: { paneer_mafia: 3 } }, { text: "\"Zinda\" Bhaag Milkha — clean fuel 🌿", scores: { clean_label_queen: 3 } }, { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : isNonveg ? [
-      { text: "\"Jhoome Jo Pathaan\" — full send 🔥", scores: { whey_bro: 2, egg_carton: 2 } },
-      { text: "\"Animal\" track — obsession max 💪", scores: { whey_bro: 3 } },
-      { text: "\"Apna Time Aayega\" — consistency wins", scores: { sattu_og: 2, clean_label_queen: 2 } },
-      { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"Jhoome Jo Pathaan\" — full send 🔥", scores: { whey_bro: 2, egg_carton: 2 } }, { text: "\"Animal\" track — obsession max 💪", scores: { whey_bro: 3 } }, { text: "\"Apna Time Aayega\" — consistency wins", scores: { sattu_og: 2, clean_label_queen: 2 } }, { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
     ] : [
-      { text: "\"Apna Time Aayega\" — consistent grind", scores: { sattu_og: 2, soya_sigma: 2 } },
-      { text: "\"Jhoome Jo Pathaan\" — full energy 🔥", scores: { whey_bro: 2, egg_carton: 2 } },
-      { text: "\"Butter Paneer\" — wrong song right food 🧀", scores: { paneer_mafia: 3 } },
-      { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
+      { text: "\"Apna Time Aayega\" — consistent grind", scores: { sattu_og: 2, soya_sigma: 2 } }, { text: "\"Jhoome Jo Pathaan\" — full energy 🔥", scores: { whey_bro: 2, egg_carton: 2 } }, { text: "\"Butter Paneer\" — wrong song right food 🧀", scores: { paneer_mafia: 3 } }, { text: "\"Kal Ho Na Ho\" — kal se pakka 🤡", scores: { dal_delusional: 2, protein_poser: 2 } },
     ]},
   ];
 };
 
-// ============ AVATAR COMPONENT ============
-const Avatar = ({ name, color, size = 24 }) => (
-  <div style={{ width: size, height: size, borderRadius: "50%", background: color || "#FF5733", display: "flex", alignItems: "center", justifyContent: "center", fontSize: size * 0.45, fontWeight: 800, color: "#fff", flexShrink: 0 }}>
-    {name?.[0]?.toUpperCase() || "?"}
+// ============ FEATURE BANNERS ============
+const FEATURES = [
+  { icon: "💯", title: "PROTEIN SCORE™", desc: "One number. 0-100. Like credit score but protein. Put it in your bio. Flex on everyone.", color: "#FF5733", detail: "78", detailLabel: "YOUR SCORE" },
+  { icon: "🔥", title: "ROAST MODE", desc: "App roasts you in Hinglish when you eat trash. Sharma ji disappointed hai. Friends join the roast.", color: "#FB7185", detail: "💀", detailLabel: "3 SAMOSE = 9g" },
+  { icon: "📊", title: "PROTEIN WRAPPED", desc: "Weekly stats card like Spotify Wrapped. Top sources, rank vs India. Designed for your story.", color: "#D4A853", detail: "TOP 12%", detailLabel: "OF INDIA" },
+  { icon: "⚔️", title: "SQUAD BATTLES", desc: "Weekly protein war with friends. Losers do a dare. Create your squad. Talk trash.", color: "#34D399", detail: "410 vs 340", detailLabel: "SOYA GANG WINS" },
+  { icon: "😏", title: "RIZZ RATING", desc: "High protein = better skin = better body = more rizz. It's science* (*not really but GenZ loves it)", color: "#A78BFA", detail: "87", detailLabel: "CERTIFIED 🔥" },
+  { icon: "👨‍👩‍👧", title: "PARENT MODE", desc: "Subscribe mummy. One daily tip she can't ignore. Silently turn your family healthy.", color: "#FB923C", detail: "📲", detailLabel: "MUMMY ENROLLED" },
+];
+
+const FeatureBanner = ({ f, i }) => (
+  <div style={{
+    display: "flex", alignItems: "center", gap: "clamp(12px, 3vw, 24px)",
+    flexDirection: i % 2 === 0 ? "row" : "row-reverse",
+    background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)",
+    borderRadius: 20, padding: "clamp(16px, 4vw, 26px)",
+    animation: `fadeUp 0.5s ease ${i * 0.08}s both`,
+  }}>
+    {/* Visual side */}
+    <div style={{
+      width: "clamp(85px, 22vw, 120px)", height: "clamp(85px, 22vw, 120px)",
+      borderRadius: 22, background: f.color + "10", border: `1.5px solid ${f.color}20`,
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      flexShrink: 0,
+    }}>
+      <div style={{ fontSize: "clamp(34px, 9vw, 48px)" }}>{f.icon}</div>
+      <div style={{ fontSize: "clamp(10px, 2.5vw, 14px)", color: f.color, fontWeight: 800, marginTop: 3, fontFamily: "'Anybody', Impact, sans-serif" }}>{f.detail}</div>
+      <div style={{ fontSize: "clamp(6px, 1.4vw, 8px)", color: "rgba(255,255,255,0.25)", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 0.5 }}>{f.detailLabel}</div>
+    </div>
+    {/* Text side */}
+    <div style={{ flex: 1, textAlign: i % 2 === 0 ? "left" : "right" }}>
+      <div style={{ fontSize: "clamp(15px, 3.8vw, 20px)", fontWeight: 900, color: f.color, fontFamily: "'Anybody', Impact, sans-serif", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>{f.title}</div>
+      <div style={{ fontSize: "clamp(12px, 2.8vw, 14px)", color: "rgba(255,255,255,0.45)", lineHeight: 1.6 }}>{f.desc}</div>
+    </div>
   </div>
 );
 
-// ============ iPHONE MOCKUP ============
-const PhoneMockup = ({ children, label }) => (
-  <div style={{ width: "100%" }}>
-    <div style={{ width: "100%", aspectRatio: "9/18.5", background: "#0A0A0F", borderRadius: "clamp(16px, 4vw, 28px)", border: "2px solid rgba(255,255,255,0.08)", position: "relative", overflow: "hidden", boxShadow: "0 12px 40px rgba(0,0,0,0.4)" }}>
-      <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: "40%", maxWidth: 80, height: "clamp(12px, 3vw, 22px)", background: "#000", borderRadius: "0 0 10px 10px", zIndex: 5 }} />
-      <div style={{ padding: "clamp(16px, 4vw, 28px) clamp(8px, 2vw, 14px) clamp(3px, 1vw, 6px)", display: "flex", justifyContent: "space-between", fontSize: "clamp(6px, 1.5vw, 9px)", color: "rgba(255,255,255,0.4)", fontWeight: 600 }}><span>9:41</span><span>●●● ■</span></div>
-      <div style={{ padding: "0 clamp(6px, 2vw, 12px) clamp(6px, 2vw, 12px)", overflow: "hidden", height: "calc(100% - clamp(28px, 6vw, 46px))" }}>{children}</div>
-    </div>
-    <div style={{ textAlign: "center", marginTop: 6, fontSize: "clamp(8px, 1.8vw, 11px)", color: "rgba(255,255,255,0.25)", fontWeight: 600, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>
+const FeatureList = () => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 28, width: "100%" }}>
+    {FEATURES.map((f, i) => <FeatureBanner key={i} f={f} i={i} />)}
   </div>
 );
 
-// Score Screen with avatar
-const ScoreScreen = () => (
-  <div style={{ textAlign: "center" }}>
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "clamp(4px, 1vw, 8px)" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-        <Avatar name="R" color="#FF5733" size={18} />
-        <span style={{ fontSize: "clamp(7px, 1.6vw, 10px)", color: "rgba(255,255,255,0.4)" }}>rahul_fit</span>
-      </div>
-      <span style={{ fontSize: "clamp(7px, 1.4vw, 9px)", color: "rgba(255,255,255,0.2)" }}>⚙️</span>
-    </div>
-    <div style={{ fontSize: "clamp(7px, 1.5vw, 10px)", color: "rgba(255,255,255,0.3)", marginBottom: "clamp(2px, .5vw, 4px)", letterSpacing: 1 }}>YOUR PROTEIN SCORE</div>
-    <div style={{ position: "relative", width: "clamp(60px, 16vw, 100px)", height: "clamp(60px, 16vw, 100px)", margin: "clamp(4px, 1vw, 8px) auto" }}>
-      <svg width="100%" height="100%" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6"/><circle cx="50" cy="50" r="42" fill="none" stroke="#FF5733" strokeWidth="6" strokeDasharray={`${78*2.64} 264`} strokeLinecap="round" transform="rotate(-90 50 50)"/></svg>
-      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ fontSize: "clamp(18px, 5vw, 32px)", fontWeight: 900, color: "#fff" }}>78</div>
-        <div style={{ fontSize: "clamp(5px, 1.2vw, 7px)", color: "#FF5733", fontWeight: 700 }}>TOP 15%</div>
-      </div>
-    </div>
-    <div style={{ fontSize: "clamp(6px, 1.4vw, 9px)", color: "rgba(255,255,255,0.35)", marginBottom: "clamp(4px, 1.5vw, 10px)" }}>better than 85% of India 🇮🇳</div>
-    <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "clamp(6px, 1.5vw, 10px)", padding: "clamp(4px, 1.2vw, 8px) clamp(6px, 1.5vw, 10px)", textAlign: "left" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "clamp(7px, 1.6vw, 11px)", color: "#fff", marginBottom: "clamp(2px, .5vw, 4px)" }}><span>Today</span><span style={{ color: "#FF5733" }}>62g ✓</span></div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: "clamp(7px, 1.6vw, 11px)", color: "rgba(255,255,255,0.4)" }}><span>Target</span><span>80g</span></div>
-    </div>
-    <div style={{ background: "#FF5733", borderRadius: "clamp(4px, 1vw, 8px)", padding: "clamp(3px, .8vw, 6px)", marginTop: "clamp(4px, 1.2vw, 8px)", fontSize: "clamp(7px, 1.5vw, 10px)", fontWeight: 800, color: "#fff" }}>SHARE SCORE →</div>
-  </div>
-);
-
-// Roast Screen — group chat style
-const RoastScreen = () => {
-  const msgs = [
-    { name: "Arjun", color: "#60A5FA", text: "bhai tune aaj kya khaya? 👀", self: false },
-    { name: "You", color: "#FF5733", text: "3 samose + chai ☕", self: true },
-    { name: "Priya", color: "#F472B6", text: "9g protein 💀💀💀", self: false },
-    { name: "PROTEEEN", color: "#FF5733", text: "Sharma ji disappointed hai 😔", self: false, isBot: true },
-    { name: "Arjun", color: "#60A5FA", text: "bro tera score 23 hogya 📉", self: false },
-  ];
-  return (
-    <div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "clamp(4px, 1vw, 8px)" }}>
-        <div style={{ fontSize: "clamp(7px, 1.5vw, 10px)", color: "#FF5733", fontWeight: 700, letterSpacing: 1 }}>🔥 SQUAD ROASTS</div>
-        <div style={{ display: "flex", gap: -4 }}>
-          <Avatar name="A" color="#60A5FA" size={14} />
-          <Avatar name="P" color="#F472B6" size={14} />
-          <Avatar name="R" color="#34D399" size={14} />
+// Compact version for waitlist
+const FeatureStrip = () => (
+  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center", marginBottom: 24 }}>
+    {FEATURES.slice(0, 4).map((f, i) => (
+      <div key={i} style={{ background: f.color + "0A", border: `1px solid ${f.color}15`, borderRadius: 12, padding: "10px 14px", display: "flex", alignItems: "center", gap: 8, flex: "1 1 calc(50% - 4px)", minWidth: 150 }}>
+        <span style={{ fontSize: 22 }}>{f.icon}</span>
+        <div>
+          <div style={{ fontSize: 12, fontWeight: 800, color: f.color, fontFamily: "'Anybody', Impact, sans-serif" }}>{f.title}</div>
+          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>{f.detail} — {f.detailLabel.toLowerCase()}</div>
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(3px, .8vw, 6px)" }}>
-        {msgs.map((m, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: m.self ? "row-reverse" : "row", alignItems: "flex-end", gap: "clamp(3px, .6vw, 5px)" }}>
-            {!m.self && <Avatar name={m.isBot ? "🤖" : m.name} color={m.color} size={14} />}
-            <div style={{
-              background: m.isBot ? "rgba(255,87,51,0.15)" : m.self ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)",
-              border: m.isBot ? "1px solid rgba(255,87,51,0.2)" : "none",
-              borderRadius: "clamp(6px, 1.5vw, 10px)",
-              padding: "clamp(4px, 1vw, 7px) clamp(6px, 1.2vw, 9px)",
-              maxWidth: "78%",
-            }}>
-              {!m.self && <div style={{ fontSize: "clamp(5px, 1vw, 7px)", color: m.isBot ? "#FF5733" : m.color, fontWeight: 700, marginBottom: 1 }}>{m.name}</div>}
-              <div style={{ fontSize: "clamp(7px, 1.5vw, 10px)", color: m.isBot ? "#FF5733" : "rgba(255,255,255,0.7)", lineHeight: 1.4 }}>{m.text}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "clamp(6px, 1.5vw, 10px)", padding: "clamp(4px, .8vw, 6px)", marginTop: "clamp(4px, 1vw, 8px)", display: "flex", alignItems: "center", gap: 4 }}>
-        <div style={{ flex: 1, fontSize: "clamp(6px, 1.3vw, 9px)", color: "rgba(255,255,255,0.2)" }}>type something...</div>
-        <div style={{ fontSize: "clamp(8px, 1.8vw, 12px)" }}>📸</div>
-      </div>
-    </div>
-  );
-};
-
-// Wrapped Screen
-const WrappedScreen = () => (
-  <div style={{ textAlign: "center" }}>
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginBottom: "clamp(2px, .5vw, 4px)" }}>
-      <Avatar name="R" color="#FF5733" size={14} />
-      <span style={{ fontSize: "clamp(6px, 1.3vw, 9px)", color: "#D4A853", fontWeight: 700, letterSpacing: 1 }}>PROTEIN WRAPPED</span>
-    </div>
-    <div style={{ fontSize: "clamp(5px, 1.2vw, 8px)", color: "rgba(255,255,255,0.25)", marginBottom: "clamp(4px, 1vw, 8px)" }}>THIS WEEK</div>
-    <div style={{ fontSize: "clamp(22px, 6vw, 36px)", fontWeight: 900, color: "#fff" }}>420g</div>
-    <div style={{ fontSize: "clamp(6px, 1.3vw, 9px)", color: "rgba(255,255,255,0.35)", marginBottom: "clamp(6px, 1.5vw, 10px)" }}>total protein this week</div>
-    <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: "clamp(5px, 1.2vw, 8px)", padding: "clamp(4px, 1vw, 8px)", marginBottom: "clamp(3px, .8vw, 6px)", textAlign: "left" }}>
-      <div style={{ fontSize: "clamp(6px, 1.2vw, 9px)", color: "rgba(255,255,255,0.25)", marginBottom: "clamp(1px, .3vw, 3px)" }}>TOP SOURCE</div>
-      <div style={{ fontSize: "clamp(8px, 2vw, 13px)", color: "#fff" }}>🧀 Paneer — 180g</div>
-    </div>
-    <div style={{ background: "rgba(212,168,83,0.08)", borderRadius: "clamp(5px, 1.2vw, 8px)", padding: "clamp(4px, 1vw, 8px)", textAlign: "left" }}>
-      <div style={{ fontSize: "clamp(6px, 1.2vw, 9px)", color: "rgba(255,255,255,0.25)", marginBottom: "clamp(1px, .3vw, 3px)" }}>YOU'RE IN THE</div>
-      <div style={{ fontSize: "clamp(14px, 3.5vw, 22px)", fontWeight: 900, color: "#D4A853" }}>TOP 12%</div>
-      <div style={{ fontSize: "clamp(5px, 1vw, 8px)", color: "rgba(255,255,255,0.25)" }}>of India 🇮🇳</div>
-    </div>
-    <div style={{ background: "#D4A853", borderRadius: "clamp(4px, 1vw, 8px)", padding: "clamp(3px, .8vw, 6px)", marginTop: "clamp(4px, 1.2vw, 8px)", fontSize: "clamp(7px, 1.5vw, 10px)", fontWeight: 800, color: "#000" }}>SHARE WRAPPED →</div>
-  </div>
-);
-
-// Squad Screen with avatars
-const SquadScreen = () => (
-  <div>
-    <div style={{ fontSize: "clamp(7px, 1.5vw, 10px)", color: "#34D399", fontWeight: 700, marginBottom: "clamp(4px, 1vw, 8px)", letterSpacing: 1 }}>⚔️ SQUAD BATTLES</div>
-    <div style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.12)", borderRadius: "clamp(6px, 1.5vw, 10px)", padding: "clamp(4px, 1.2vw, 8px)", marginBottom: "clamp(2px, .5vw, 4px)" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: "clamp(2px, .4vw, 4px)" }}>
-        <div style={{ display: "flex" }}><Avatar name="A" color="#34D399" size={12}/><Avatar name="S" color="#60A5FA" size={12}/><Avatar name="K" color="#A78BFA" size={12}/></div>
-        <span style={{ fontSize: "clamp(7px, 1.4vw, 10px)", color: "#34D399", fontWeight: 700 }}>🏆 SOYA GANG</span>
-      </div>
-      <div style={{ fontSize: "clamp(14px, 4vw, 24px)", fontWeight: 900, color: "#fff", textAlign: "center" }}>410g</div>
-      <div style={{ fontSize: "clamp(5px, 1.1vw, 8px)", color: "rgba(255,255,255,0.3)", textAlign: "center" }}>this week • winning</div>
-    </div>
-    <div style={{ textAlign: "center", fontSize: "clamp(8px, 1.8vw, 12px)", color: "rgba(255,255,255,0.15)", margin: "clamp(1px, .3vw, 2px) 0" }}>VS</div>
-    <div style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.1)", borderRadius: "clamp(6px, 1.5vw, 10px)", padding: "clamp(4px, 1.2vw, 8px)", marginBottom: "clamp(4px, 1vw, 8px)" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: "clamp(2px, .4vw, 4px)" }}>
-        <div style={{ display: "flex" }}><Avatar name="R" color="#FB7185" size={12}/><Avatar name="P" color="#FB923C" size={12}/></div>
-        <span style={{ fontSize: "clamp(7px, 1.4vw, 10px)", color: "#FB7185", fontWeight: 700 }}>💀 PANEER BOYS</span>
-      </div>
-      <div style={{ fontSize: "clamp(14px, 4vw, 24px)", fontWeight: 900, color: "#fff", textAlign: "center" }}>340g</div>
-      <div style={{ fontSize: "clamp(5px, 1.1vw, 8px)", color: "rgba(255,255,255,0.3)", textAlign: "center" }}>this week • losing</div>
-    </div>
-    <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: "clamp(4px, 1vw, 8px)", padding: "clamp(3px, .8vw, 6px)", textAlign: "center" }}>
-      <div style={{ fontSize: "clamp(7px, 1.4vw, 10px)", color: "rgba(255,255,255,0.4)" }}>Losers do a dare 😈</div>
-      <div style={{ fontSize: "clamp(6px, 1.2vw, 9px)", color: "rgba(255,255,255,0.2)" }}>3 days left</div>
-    </div>
-  </div>
-);
-
-// ============ PHONE GRID — 2x2 on desktop, 2x2 scrollable on mobile ============
-const PhoneGrid = () => (
-  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "clamp(8px, 2vw, 16px)", maxWidth: 520, margin: "0 auto", marginBottom: 24, padding: "0 4px" }}>
-    <PhoneMockup label="Protein Score"><ScoreScreen /></PhoneMockup>
-    <PhoneMockup label="Squad Roasts"><RoastScreen /></PhoneMockup>
-    <PhoneMockup label="Wrapped"><WrappedScreen /></PhoneMockup>
-    <PhoneMockup label="Squad Battles"><SquadScreen /></PhoneMockup>
+    ))}
   </div>
 );
 
@@ -369,12 +186,8 @@ export default function ProteeenQuiz() {
   const handleBack = () => {
     if (currentQ > 0 && answerHistory.length > 0) {
       const prev = answerHistory[answerHistory.length - 1];
-      setScores(prev.scores);
-      setCurrentQ(prev.q);
-      setAnswerHistory(answerHistory.slice(0, -1));
-    } else {
-      setStep("diet"); setCurrentQ(0); setScores({}); setAnswerHistory([]);
-    }
+      setScores(prev.scores); setCurrentQ(prev.q); setAnswerHistory(answerHistory.slice(0, -1));
+    } else { setStep("diet"); setCurrentQ(0); setScores({}); setAnswerHistory([]); }
   };
 
   const handleWaitlist = () => { if (email?.includes("@")) setSubmitted(true); };
@@ -382,15 +195,11 @@ export default function ProteeenQuiz() {
   const generateAndAction = useCallback(async (action) => {
     if (!result) return;
     const c = canvasRef.current; if (!c) return;
-    const ctx = c.getContext("2d");
-    const w = 1080, h = 1350; c.width = w; c.height = h;
+    const ctx = c.getContext("2d"); const w = 1080, h = 1350; c.width = w; c.height = h;
     ctx.fillStyle = "#08080C"; ctx.fillRect(0, 0, w, h);
-    const g = ctx.createRadialGradient(w/2, 380, 0, w/2, 380, 500);
-    g.addColorStop(0, result.color + "12"); g.addColorStop(1, "transparent");
-    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+    const g = ctx.createRadialGradient(w/2, 380, 0, w/2, 380, 500); g.addColorStop(0, result.color + "12"); g.addColorStop(1, "transparent"); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
     ctx.fillStyle = result.color; ctx.fillRect(0, 0, w, 5);
-    ctx.textAlign = "center";
-    ctx.font = "bold 32px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.15)"; ctx.fillText("PROTEEEN", w/2, 60);
+    ctx.textAlign = "center"; ctx.font = "bold 32px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.15)"; ctx.fillText("PROTEEEN", w/2, 60);
     ctx.font = "180px serif"; ctx.fillText(result.emoji, w/2, 310);
     ctx.font = "900 76px sans-serif"; ctx.fillStyle = result.color; ctx.fillText(result.name, w/2, 440);
     ctx.font = "italic 30px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.5)"; ctx.fillText(`"${result.flexLine}"`, w/2, 500);
@@ -400,8 +209,7 @@ export default function ProteeenQuiz() {
     ctx.font = "bold 16px sans-serif"; ctx.fillStyle = "#fff"; ctx.fillText(`RIZZ: ${result.rizzScore}/100`, barX + (result.rizzScore/100)*barW/2, barY + 24);
     const statsY = 660;
     [{icon:"⚡",label:"PROTEIN",val:result.proteinLevel},{icon:"🏆",label:"PERCENTILE",val:`TOP ${100-result.percentile}%`},{icon:"🔥",label:"RIZZ",val:`${result.rizzScore}/100`}].forEach((s,i) => {
-      const sx = w/2 + (i-1)*280;
-      ctx.font = "36px serif"; ctx.fillText(s.icon, sx, statsY);
+      const sx = w/2 + (i-1)*280; ctx.font = "36px serif"; ctx.fillText(s.icon, sx, statsY);
       ctx.font = "bold 26px sans-serif"; ctx.fillStyle = "#fff"; ctx.fillText(s.val, sx, statsY+40);
       ctx.font = "12px sans-serif"; ctx.fillStyle = "rgba(255,255,255,0.25)"; ctx.fillText(s.label, sx, statsY+60); ctx.fillStyle = result.color;
     });
@@ -429,13 +237,13 @@ export default function ProteeenQuiz() {
 
   // LANDING
   if (step === "landing") return (
-    <div style={pg}><style>{css}</style>
+    <div style={{ ...pg, justifyContent: "flex-start", paddingTop: 50 }}><style>{css}</style>
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, background: P.primary, padding: "7px 0", overflow: "hidden", zIndex: 10 }}>
         <div style={{ display: "flex", animation: "marquee 25s linear infinite", whiteSpace: "nowrap" }}>
           {Array(10).fill("PROTEEEN • APP COMING SOON • INDIA KA PROTEIN APP • ").map((t, i) => <span key={i} style={{ fontSize: 11, fontWeight: 900, color: "#fff", fontFamily: ft, letterSpacing: 2 }}>{t}</span>)}
         </div>
       </div>
-      <div style={{ textAlign: "center", maxWidth: 560, zIndex: 2, animation: "fadeUp 0.8s ease", marginTop: 40, padding: "0 4px" }}>
+      <div style={{ textAlign: "center", maxWidth: 560, zIndex: 2, animation: "fadeUp 0.8s ease", padding: "0 4px", width: "100%" }}>
         <div style={{ position: "relative", display: "inline-block", marginBottom: 12 }}>
           <h1 style={{ fontSize: "clamp(3.5rem,14vw,6.5rem)", fontFamily: ft, fontWeight: 900, lineHeight: .85, letterSpacing: "-0.03em" }}>
             <span style={{ color: P.cream }}>PROTE</span><span style={{ color: "#fff", animation: "glitch 3s infinite" }}>EEN</span>
@@ -443,16 +251,51 @@ export default function ProteeenQuiz() {
           <div style={{ position: "absolute", top: -6, right: -14, background: P.gold, color: "#000", fontSize: 9, fontWeight: 800, padding: "3px 8px", borderRadius: 4, transform: "rotate(12deg)", fontFamily: fm, letterSpacing: 1 }}>BETA</div>
         </div>
         <p style={{ fontSize: "clamp(.95rem,3vw,1.15rem)", color: P.cream + "70", marginBottom: 4, fontStyle: "italic" }}>india ka protein app. tu kaha pe hai?</p>
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.12)", fontFamily: fm, marginBottom: 8 }}>not a health app. a status signal. 💅</p>
-        <p style={{ fontSize: 13, color: P.primary + "90", marginBottom: 28, fontWeight: 600 }}>look better • flex harder • join the protein tribe</p>
-        <PhoneGrid />
-        <div style={{ background: P.primary + "0A", border: `1px solid ${P.primary}18`, borderRadius: 14, padding: "12px 20px", marginBottom: 28, display: "inline-flex", alignItems: "center", gap: 10 }}>
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.12)", fontFamily: fm, marginBottom: 24 }}>not a health app. a status signal. 💅</p>
+
+        {/* Hero banner — the killer need */}
+        <div style={{
+          background: `linear-gradient(135deg, ${P.primary}12, ${P.gold}08)`,
+          border: `1px solid ${P.primary}20`, borderRadius: 22,
+          padding: "clamp(20px, 5vw, 32px)", marginBottom: 24, textAlign: "left",
+          position: "relative", overflow: "hidden",
+        }}>
+          <div style={{ position: "absolute", top: -20, right: -20, fontSize: 80, opacity: 0.06 }}>💪</div>
+          <div style={{ fontSize: "clamp(10px, 2.2vw, 12px)", color: P.primary, fontFamily: fm, letterSpacing: 2, marginBottom: 10, textTransform: "uppercase", fontWeight: 700 }}>THE PROBLEM</div>
+          <div style={{ fontSize: "clamp(1.2rem, 4.5vw, 1.6rem)", fontWeight: 900, color: P.cream, fontFamily: ft, lineHeight: 1.2, marginBottom: 10, textTransform: "uppercase" }}>
+            93% of India is protein deficient.<br/>
+            <span style={{ color: P.primary }}>Nobody's tracking it.</span>
+          </div>
+          <div style={{ fontSize: "clamp(12px, 2.8vw, 14px)", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 14 }}>
+            You count calories. You count steps. You count macros maybe. But protein? You're guessing. And you're probably wrong. PROTEEEN makes protein your flex — track it, share it, compete with friends, get roasted when you slip.
+          </div>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 11, color: P.primary, fontWeight: 700, background: P.primary + "12", padding: "4px 10px", borderRadius: 6 }}>🎯 track protein</span>
+            <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700, background: "#34D39912", padding: "4px 10px", borderRadius: 6 }}>⚔️ compete with friends</span>
+            <span style={{ fontSize: 11, color: "#A78BFA", fontWeight: 700, background: "#A78BFA12", padding: "4px 10px", borderRadius: 6 }}>📊 share your score</span>
+          </div>
+        </div>
+
+        <p style={{ fontSize: 13, color: P.primary + "90", marginBottom: 20, fontWeight: 600 }}>look better • flex harder • join the protein tribe</p>
+
+        {/* Primary CTA — above the fold */}
+        <button onClick={() => setStep("diet")} style={{ background: `linear-gradient(135deg, ${P.primary}, #FF7B5C)`, color: "#fff", border: "none", borderRadius: 16, padding: "18px 48px", fontSize: "clamp(1rem,4vw,1.15rem)", fontWeight: 900, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, boxShadow: `0 8px 40px ${P.primary}30`, animation: "pulse 2.5s infinite", marginBottom: 8 }}>FIND MY PROTEIN AURA →</button>
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.1)", fontFamily: fm, marginBottom: 32 }}>30 sec • 10 questions • 1 truth bomb 💣</p>
+
+        {/* What's in the app */}
+        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.15)", fontFamily: fm, letterSpacing: 3, marginBottom: 16, textTransform: "uppercase" }}>WHAT'S IN THE APP</div>
+
+        {/* Feature Banners */}
+        <FeatureList />
+
+        <div style={{ background: P.primary + "0A", border: `1px solid ${P.primary}18`, borderRadius: 14, padding: "12px 20px", marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 16 }}>🚀</span>
           <span style={{ fontSize: 13, color: P.cream + "90" }}><strong style={{ color: P.primary }}>App dropping soon</strong> — quiz le, waitlist join kar</span>
         </div>
         <br />
-        <button onClick={() => setStep("diet")} style={{ background: `linear-gradient(135deg, ${P.primary}, #FF7B5C)`, color: "#fff", border: "none", borderRadius: 16, padding: "18px 48px", fontSize: "clamp(1rem,4vw,1.15rem)", fontWeight: 900, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, boxShadow: `0 8px 40px ${P.primary}30`, animation: "pulse 2.5s infinite" }}>FIND MY PROTEIN AURA →</button>
-        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.1)", marginTop: 14, fontFamily: fm }}>30 sec • 10 questions • 1 truth bomb 💣</p>
+        {/* Bottom CTA — smaller, outline style */}
+        <button onClick={() => setStep("diet")} style={{ background: "transparent", color: P.primary, border: `2px solid ${P.primary}`, borderRadius: 14, padding: "14px 36px", fontSize: "clamp(0.85rem,3.2vw,1rem)", fontWeight: 800, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>TAKE THE QUIZ →</button>
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.1)", marginTop: 8, fontFamily: fm, marginBottom: 40 }}>find your protein aura in 30 seconds</p>
       </div>
     </div>
   );
@@ -489,10 +332,7 @@ export default function ProteeenQuiz() {
     return (
       <div style={{ ...pg, justifyContent: "flex-start", paddingTop: 40 }}><style>{css}</style>
         <div style={{ width: "100%", maxWidth: 480, zIndex: 2 }}>
-          {/* Back button */}
-          <button onClick={handleBack} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.3)", fontSize: 13, marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-            ← {currentQ === 0 ? "home" : "back"}
-          </button>
+          <button onClick={handleBack} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.3)", fontSize: 13, marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>← {currentQ === 0 ? "home" : "back"}</button>
           <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
             <span style={{ fontSize: 11, fontFamily: fm, color: "rgba(255,255,255,0.2)" }}>{currentQ+1}/{questions.length}</span>
             <span style={{ fontSize: 11, fontFamily: fm, color: P.primary, fontWeight: 700 }}>{Math.round(progress)}%</span>
@@ -564,15 +404,13 @@ export default function ProteeenQuiz() {
   // WAITLIST
   if (step === "waitlist") return (
     <div style={pg}><style>{css}</style>
-      <div style={{ textAlign: "center", maxWidth: 440, animation: "fadeUp 0.5s ease", zIndex: 2, padding: "0 4px" }}>
+      <div style={{ textAlign: "center", maxWidth: 480, animation: "fadeUp 0.5s ease", zIndex: 2, padding: "0 4px" }}>
         {submitted ? (<>
           <div style={{ fontSize: 64, marginBottom: 16, animation: "popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)" }}>🎉</div>
           <h2 style={{ fontSize: "clamp(2rem,7vw,2.8rem)", fontWeight: 900, fontFamily: ft, color: P.primary, marginBottom: 6, textTransform: "uppercase" }}>YOU'RE IN</h2>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.35)", marginBottom: 28, lineHeight: 1.7 }}>We'll hit you up when PROTEEEN drops.<br/>{result && <>Your Aura: <span style={{ color: result.color, fontWeight: 700 }}>{result.emoji} {result.name}</span></>}</p>
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.15)", fontFamily: fm, letterSpacing: 2, marginBottom: 14 }}>WHAT'S COMING</div>
-            <PhoneGrid />
-          </div>
+          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.15)", fontFamily: fm, letterSpacing: 2, marginBottom: 14 }}>WHAT'S COMING</div>
+          <FeatureStrip />
           {result && <button onClick={() => generateAndAction("download")} style={{ width: "100%", background: `linear-gradient(135deg, ${P.primary}, #FF7B5C)`, color: "#fff", border: "none", borderRadius: 14, padding: 16, fontSize: 15, fontWeight: 900, fontFamily: ft, textTransform: "uppercase", letterSpacing: 1, marginBottom: 12 }}>📥 DOWNLOAD & SHARE MY AURA</button>}
           {copyMsg && <div style={{ background: "#34D399", color: "#000", borderRadius: 10, padding: 10, fontSize: 13, fontWeight: 700, marginBottom: 12 }}>{copyMsg}</div>}
           <div style={{ display: "flex", gap: 8 }}>
